@@ -6,8 +6,7 @@ const connectDB = async () => {
      try {
           await mongoose.connect(
                 process.env.MONGO_URI,
-              
-               //"mongodb+srv://Angel:Prayer33@angeldb.ofbwpgd.mongodb.net/Music-Library-MS?retryWrites=true&w=majority",
+     
                {
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
