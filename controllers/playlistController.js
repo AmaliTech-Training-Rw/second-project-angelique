@@ -1,12 +1,14 @@
-import Playlist from '../models/playlistModel.js';
+import Playlist from '../models/playlistSong.js';
 
 
 const createPlaylist = async (req, res) => {
   try {
-    const { name, user, songs } = req.body;
-    const newPlaylist = await Playlist.create({ name, user, songs });
-    res.status(201).json(newPlaylist);
+    const { name, user, song } = req.body;
+    const newPlaylist = await Playlist.create({ name, user, song });
+    newPlaylist.save()
+    res.status(201).json({ newPlaylist: "playlist created successfully" });
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Error creating the playlist' });
   }
 };
@@ -37,4 +39,4 @@ const getPlaylistContents = async (req, res) => {
   }
 };
 
-export {getPlaylistContents,addSongToPlaylist,createPlaylist}
+export { getPlaylistContents, addSongToPlaylist, createPlaylist }
